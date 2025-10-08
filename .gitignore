@@ -1,9 +1,3 @@
-# Java / Maven
-target/
-*.class
-*.war
-*.iml
-
 # IntelliJ IDEA
 .idea/
 *.iml
