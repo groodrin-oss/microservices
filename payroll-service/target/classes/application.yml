@@ -1,0 +1,12 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://payroll-db:5432/payroll
+    username: payroll_user
+    password: payroll_pass
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
