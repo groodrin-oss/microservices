@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hr
+    username: hr_user
+    password: hr_pass
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+payroll:
+  service:
+    url: http://localhost:8081

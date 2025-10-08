@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  hr-db:
+    image: postgres:15
+    container_name: hr-db
+    environment:
+      POSTGRES_DB: hr
+      POSTGRES_USER: hr_user
+      POSTGRES_PASSWORD: hr_pass
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
+
+  payroll-db:
+    image: postgres:15
+    container_name: payroll-db
+    environment:
+      POSTGRES_DB: payroll
+      POSTGRES_USER: payroll_user
+      POSTGRES_PASSWORD: payroll_pass
+    ports:
+      - "5433:5432"
+    networks:
+      - backend
+
+  hr-service:
+    build: ./hr-service
+    container_name: hr-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - hr-db
+      - payroll-service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://hr-db:5432/hr
+      - SPRING_DATASOURCE_USERNAME=hr_user
+      - SPRING_DATASOURCE_PASSWORD=hr_pass
+      - PAYROLL_SERVICE_URL=http://payroll-service:8081
+    networks:
+      - backend
+
+  payroll-service:
+    build: ./payroll-service
+    container_name: payroll-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - payroll-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://payroll-db:5432/payroll
+      - SPRING_DATASOURCE_USERNAME=payroll_user
+      - SPRING_DATASOURCE_PASSWORD=payroll_pass
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
