@@ -79,8 +79,8 @@ http://localhost:8080/employees/1
     GET     /employees  	Получить список всех сотрудников из расчётной БД
     GET	    /employees/{id}	Получить конкретного сотрудника из расчётной БД
 
-Ручная проверка
-# HR DB
+# Ручная проверка
+HR DB
 ```bash
 docker exec -it hr-db psql -U hr_user -d hr
 ```
@@ -89,7 +89,7 @@ SELECT * FROM employee;
 ```
 
 
-# Payroll DB
+Payroll DB
 ```bash
 docker exec -it payroll-db psql -U payroll_user -d payroll
 ```
