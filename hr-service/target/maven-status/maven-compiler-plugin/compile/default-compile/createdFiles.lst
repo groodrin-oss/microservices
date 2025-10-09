@@ -1,5 +1,6 @@
+com\example\hr\service\EmployeeService.class
+com\example\hr\HrServiceApplication.class
 com\example\hr\repository\EmployeeRepository.class
 com\example\hr\controller\EmployeeController.class
-com\example\hr\HrServiceApplication.class
 com\example\hr\entity\Employee.class
 com\example\hr\service\SyncService.class
