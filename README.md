@@ -50,7 +50,8 @@ Payroll сервис: http://localhost:8081
     DELETE	/employees/{id}	    Удалить сотрудника и отправить событие в Payroll
 
 Пример запроса POST
-POST http://localhost:8080/employees
+
+http://localhost:8080/employees
 
     {
     "id": 1,
@@ -61,14 +62,15 @@ POST http://localhost:8080/employees
     }
 
 
-Пример запроса PUT
-POST http://localhost:8080/employees/1
+Пример запроса PUT 
+
+http://localhost:8080/employees/1
 
     {
     "firstName": "Иван",
     "lastName": "Иванов",
-    "position": "Разработчик",
-    "salary": 100000
+    "position": "Старший разработчик",
+    "salary": 250000
     }
  
 
@@ -79,13 +81,18 @@ POST http://localhost:8080/employees/1
 
 Ручная проверка
 # HR DB
-
-    docker exec -it hr-db psql -U hr_user -d hr
-    SELECT * FROM employee;
-
+```bash
+docker exec -it hr-db psql -U hr_user -d hr
+```
+```bash
+SELECT * FROM employee;
+```
 
 
 # Payroll DB
-
-    docker exec -it payroll-db psql -U payroll_user -d payroll
-    SELECT * FROM employee;
+```bash
+docker exec -it payroll-db psql -U payroll_user -d payroll
+```
+```bash
+SELECT * FROM employee;
+```
